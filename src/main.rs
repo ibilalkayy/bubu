@@ -1,5 +1,6 @@
 mod cli;
 mod usecases;
+mod common;
 
 use clap::Parser;
 use crate::cli::{
