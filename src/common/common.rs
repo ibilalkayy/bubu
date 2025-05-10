@@ -1,9 +1,15 @@
 use std::{
     fs::File,
-    io::Write
+    io::Write, path::Path
 };
 
 pub fn create_manifest(package_name: &str) {
+    let is_present = Path::new("Bubu.toml").exists();
+    if is_present {
+        eprintln!("error: `cargo init` cannot be run on existing Cargo packages");
+        return;
+    }
+
     let mut data_file = File::create("Bubu.toml").expect("Failed to create the manifest file");
 
     let file_content = format!(

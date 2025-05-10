@@ -1,6 +1,10 @@
 use crate::{cli::flags::init::InitializeBubu, usecases::init::{bin::bin_usage, lib::lib_usage}};
 
 pub fn handle_init(args: InitializeBubu) {
+    if let Some(path_str) = args.path.to_str() {
+        bin_usage(path_str);
+    }
+
     if let Some(binary) = args.bin {
         bin_usage(&binary);
     }
