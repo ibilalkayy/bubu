@@ -11,5 +11,8 @@ pub struct InitializeBubu {
     pub bin: Option<String>,
 
     #[clap(short, long)]
-    pub lib: Option<String>
+    pub lib: Option<String>,
+
+    #[clap(short, long)]
+    pub edition: Option<String>
 }

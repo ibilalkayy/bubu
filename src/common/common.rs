@@ -3,7 +3,7 @@ use std::{
     io::Write, path::Path
 };
 
-pub fn create_manifest(package_name: &str) {
+pub fn create_manifest(package_name: &str, edition: &str) {
     let is_present = Path::new("Bubu.toml").exists();
     if is_present {
         eprintln!("error: `cargo init` cannot be run on existing Cargo packages");
@@ -16,7 +16,7 @@ pub fn create_manifest(package_name: &str) {
         r#"[package]
 name = "{package_name}"
 version = "0.1.0"
-edition = "2024"
+edition = "{edition}"
 
 [dependencies]
 "#

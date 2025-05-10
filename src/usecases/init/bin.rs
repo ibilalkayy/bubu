@@ -5,8 +5,8 @@ use std::{
 
 use crate::common::common::create_manifest;
 
-pub fn bin_usage(package_name: &str) {
-    create_manifest(package_name);
+pub fn bin_usage(package_name: &str, edition: &str) {
+    create_manifest(package_name, edition);
     main_file();
 }
 

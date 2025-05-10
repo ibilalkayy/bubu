@@ -1,15 +1,18 @@
 use crate::{cli::flags::init::InitializeBubu, usecases::init::{bin::bin_usage, lib::lib_usage}};
 
 pub fn handle_init(args: InitializeBubu) {
-    if let Some(path_str) = args.path.to_str() {
-        bin_usage(path_str);
-    }
+    let path = args.path.canonicalize().expect("Invalid path");
+    let package_name = path.file_name()
+        .and_then(|n| n.to_str())
+        .unwrap_or("bubu");
 
-    if let Some(binary) = args.bin {
-        bin_usage(&binary);
-    }
+    println!("{:?}", package_name);
 
-    if let Some(library) = args.lib {
-        lib_usage(&library);
+    let edition = args.edition.as_deref().unwrap_or("2024");
+
+    if args.lib.is_some() {
+        lib_usage(package_name, edition);
+    } else {
+        bin_usage(package_name, edition);
     }
 }
