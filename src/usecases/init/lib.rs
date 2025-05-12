@@ -2,8 +2,8 @@ use std::{fs::{self, File}, io::Write};
 
 use crate::common::common::create_manifest;
 
-pub fn lib_usage(package_name: &str, edition: &str) {
-    create_manifest(package_name, edition);
+pub fn lib_usage(package_name: &str, edition: &str, name: &str) {
+    create_manifest(package_name, edition, name);
     lib_file();
 }
 

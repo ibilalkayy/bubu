@@ -6,13 +6,13 @@ pub fn handle_init(args: InitializeBubu) {
         .and_then(|n| n.to_str())
         .unwrap_or("bubu");
 
-    println!("{:?}", package_name);
-
     let edition = args.edition.as_deref().unwrap_or("2024");
 
+    let name = args.name.as_deref().unwrap_or("bubu");
+
     if args.lib.is_some() {
-        lib_usage(package_name, edition);
+        lib_usage(package_name, edition, name);
     } else {
-        bin_usage(package_name, edition);
+        bin_usage(package_name, edition, name);
     }
 }
