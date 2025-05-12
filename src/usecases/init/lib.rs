@@ -1,10 +1,14 @@
 use std::{fs::{self, File}, io::Write};
 
-use crate::common::common::create_manifest;
+use crate::common::common::{
+    create_manifest,
+    git_file
+};
 
 pub fn lib_usage(package_name: &str, edition: &str, name: &str) {
     create_manifest(package_name, edition, name);
     lib_file();
+    git_file();
 }
 
 fn lib_file() {

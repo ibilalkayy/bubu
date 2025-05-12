@@ -1,8 +1,9 @@
 use std::path::PathBuf;
+use strum_macros::Display;
 
-use clap::Args;
+use clap::{Args, ValueEnum};
 
-#[derive(Debug, Args)]
+#[derive(Clone, Debug, Args)]
 pub struct InitializeBubu {
     #[clap(default_value = ".")]
     pub path: PathBuf,
@@ -17,5 +18,13 @@ pub struct InitializeBubu {
     pub edition: Option<String>,
 
     #[clap(short, long)]
-    pub name: Option<String>
+    pub name: Option<String>,
+
+    #[clap(value_enum, short, long)]
+    pub vcs: VCS
+}
+
+#[derive(Clone, Debug, ValueEnum, Display)]
+pub enum VCS {
+    Git,
 }
