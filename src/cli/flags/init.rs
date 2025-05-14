@@ -21,7 +21,7 @@ pub struct InitializeBubu {
     pub name: Option<String>,
 
     #[clap(value_enum, short, long)]
-    pub vcs: VCS
+    pub vcs: Option<VCS>
 }
 
 #[derive(Clone, Debug, ValueEnum, Display)]
